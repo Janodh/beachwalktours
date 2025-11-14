@@ -1,0 +1,46 @@
+.carousel-card {
+  border-radius: 18px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+.carousel-card:hover {
+  transform: translateY(-3px);
+  transition: 0.2s ease;
+}
+
+.vehicle-section {
+  margin-top: 30px;
+  ;
+}
+
+/* Yellow button */
+.btn-yellow {
+  background: #f5c242;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-yellow:hover {
+  background: #e3ad34;
+}
+
+/* Swiper pagination styling */
+.swiper-pagination-bullet {
+  background: #d7e9f2;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #2cb8c9;
+}
+
+/* Arrow buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #2cb8c9;
+}
