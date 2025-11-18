@@ -12,33 +12,43 @@ import "swiper/css/pagination";
 
 export default function VehicleRentPage() {
   const cars = [
-    { title: "CHR", image: "/card1.jpg", label: "5 Pax (with Baggage)" },
+    { title: "CHR", image: "/chr.jpg", label: "5 Pax (with Baggage)" },
     {
       title: "Toyota Axio",
-      image: "/card2.jpg",
-      label: "3–5 Pax (with Baggage)",
+      image: "/axio.jpg",
+      label: "1–3 Pax (with Baggage)",
     },
     {
       title: "Toyota Premio",
-      image: "/card3.jpg",
-      label: "3–5 Pax (with Baggage)",
+      image: "/premio.jpg",
+      label: "1–3 Pax (with Baggage)",
+    },
+    {
+      title: "Toyota Prius",
+      image: "/prius.jpg",
+      label: "1–3 Pax (with Baggage)",
+    },
+    {
+      title: "Nissan Teana 250XV",
+      image: "/teana.jpg",
+      label: "1–3 Pax (with Baggage)",
     },
   ];
 
   const vans = [
     {
       title: "Toyota Hiace KDH",
-      image: "/van-kdh.png",
+      image: "/kdh.jpg",
       label: "10 Pax (with Baggage)",
     },
     {
       title: "Toyota Hiace Commuter",
-      image: "/van-commuter.png",
+      image: "/hiace.png",
       label: "9–15 Pax (with Baggage)",
     },
     {
       title: "Nissan Caravan",
-      image: "/van-caravan.png",
+      image: "/carevn.jpg",
       label: "8–14 Pax (with Baggage)",
     },
   ];
@@ -46,12 +56,12 @@ export default function VehicleRentPage() {
   const buses = [
     {
       title: "Toyota Coaster",
-      image: "/bus-coaster.png",
+      image: "/coaster.jpg",
       label: "15 Pax (with Baggage)",
     },
     {
       title: "Xiamen Golden Dragon",
-      image: "/bus-xiamen.png",
+      image: "/xiamen.jpg",
       label: "35–50 Pax (with Baggage)",
     },
   ];

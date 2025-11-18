@@ -21,14 +21,14 @@
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(to bottom, #f8fbff, #eef4ff);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .bg-section {
   background-color: #f8fcff;
-padding-top: 80px !important;
+  padding-top: 80px !important;
   /* match header height */
   padding-bottom: 5rem;
   min-height: 100vh;

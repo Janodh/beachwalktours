@@ -5,47 +5,49 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { tours } from "./tourData";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
-const tours = [
-  {
-    title: "14 Days Diversity Tour",
-    days: "14 Day / 13 Night",
-    pax: "Any size",
-    images: ["/card4.jpg", "/card5.jpg"], // two images
-    desc: "Get onboard on a magical 14–day journey through diverse landscapes and rich cultural heritage...",
-  },
-  {
-    title: "4 Days flagship Itinerary",
-    days: "4 Day / 3 Night",
-    pax: "Any size",
-    images: ["/card5.jpg", "/card6.jpg"],
-    desc: "Extraordinary landscapes, rich culture, and our one-of-a-kind itineraries...",
-  },
-  {
-    title: "12 Days Cultural & Heritage Tour",
-    days: "12 Day / 11 Night",
-    pax: "Any size",
-    images: ["/card6.jpg", "/card4.jpg"],
-    desc: "This 12-day journey will launch in the lively coastal hub of Negombo...",
-  },
-  {
-    title: "5 Days flagship Itinerary",
-    days: "5 Day / 4 Night",
-    pax: "Any size",
-    images: ["/card5.jpg", "/card6.jpg"],
-    desc: "Extraordinary landscapes, rich culture, and our one-of-a-kind itineraries...",
-  },
-  {
-    title: "15 Days Cultural & Heritage Tour",
-    days: "15 Day / 14 Night",
-    pax: "Any size",
-    images: ["/card6.jpg", "/card4.jpg"],
-    desc: "This 12-day journey will launch in the lively coastal hub of Negombo...",
-  },
-];
+// user tourData
+// const tours = [
+//   {
+//     title: "14 Days Diversity Tour",
+//     days: "14 Day / 13 Night",
+//     pax: "Any size",
+//     images: ["/card4.jpg", "/card5.jpg"], // two images
+//     desc: "Get onboard on a magical 14–day journey through diverse landscapes and rich cultural heritage...",
+//   },
+//   {
+//     title: "4 Days flagship Itinerary",
+//     days: "4 Day / 3 Night",
+//     pax: "Any size",
+//     images: ["/card5.jpg", "/card6.jpg"],
+//     desc: "Extraordinary landscapes, rich culture, and our one-of-a-kind itineraries...",
+//   },
+//   {
+//     title: "12 Days Cultural & Heritage Tour",
+//     days: "12 Day / 11 Night",
+//     pax: "Any size",
+//     images: ["/card6.jpg", "/card4.jpg"],
+//     desc: "This 12-day journey will launch in the lively coastal hub of Negombo...",
+//   },
+//   {
+//     title: "5 Days flagship Itinerary",
+//     days: "5 Day / 4 Night",
+//     pax: "Any size",
+//     images: ["/card5.jpg", "/card6.jpg"],
+//     desc: "Extraordinary landscapes, rich culture, and our one-of-a-kind itineraries...",
+//   },
+//   {
+//     title: "15 Days Cultural & Heritage Tour",
+//     days: "15 Day / 14 Night",
+//     pax: "Any size",
+//     images: ["/card6.jpg", "/card4.jpg"],
+//     desc: "This 12-day journey will launch in the lively coastal hub of Negombo...",
+//   },
+// ];
 
 export default function Itinerarypage() {
   return (

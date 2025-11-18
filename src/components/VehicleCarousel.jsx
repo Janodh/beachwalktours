@@ -51,7 +51,6 @@ export default function VehicleCarousel() {
 
                 <div className="mt-4 flex gap-3">
                   <button className="btn-yellow">Book Now</button>
-                  <button className="btn-outline">Details</button>
                 </div>
               </div>
             </SwiperSlide>

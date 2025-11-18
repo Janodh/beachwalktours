@@ -33,6 +33,11 @@ export default function Navbar() {
               Contact
             </Link>
           </li>
+          <li>
+            <Link href="/aboutus" className="hover:text-blue-600">
+              About Us
+            </Link>
+          </li>
         </ul>
 
         {/* WhatsApp Button */}

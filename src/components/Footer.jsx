@@ -25,6 +25,9 @@ export default function Footer() {
             <li>
               <a href="/contact">Contact Us</a>
             </li>
+            <li>
+              <a href="/aboutus">About Us</a>
+            </li>
           </ul>
         </div>
 

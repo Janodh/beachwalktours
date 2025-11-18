@@ -1,0 +1,56 @@
+/* What We Offer */
+main {
+  background: linear-gradient(to bottom, #f8fbff, #eef4ff);
+  min-height: 100vh;
+
+  font-family: 'Inter', sans-serif;
+}
+
+h2 {
+  font-size: 28px;
+  letter-spacing: -1px;
+}
+
+section.grid div.space-y-6 h4 {
+  font-weight: 600;
+  color: #1e3a5f;
+}
+
+section.grid div.space-y-6 p {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #718096;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+/* A Decade of Excellence */
+section.text-center h3 {
+  color: #1e3a5f;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+section.text-center p {
+  color: #718096;
+  line-height: 1.75;
+}
+
+/* Contact Cards */
+section.grid.md\:grid-cols-3 .bg-white {
+  text-align: center;
+}
+
+section.grid.md\:grid-cols-3 p.font-semibold {
+  color: #1e3a5f;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+section.grid.md\:grid-cols-3 p.text-gray-500 {
+  margin-top: 0.5rem;
+  color: #a0aec0;
+  /* gray-400 */
+  font-size: 0.875rem;
+}
