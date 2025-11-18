@@ -15,6 +15,14 @@
 
 }
 
+.inputBox::placeholder {
+  color: #334155;
+}
+
+body {
+  color: #334155;
+}
+
 @media (min-width: 900px) {
   .contact-container {
     grid-template-columns: 1fr 1fr;

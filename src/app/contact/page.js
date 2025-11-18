@@ -42,7 +42,6 @@ export default function Contact() {
     <section className="contact-page bg-section">
       <Breadcrumbs />
 
-
       <div className="contact-container">
         {/* Left Side */}
         <div className="contact-info">
@@ -78,6 +77,10 @@ export default function Contact() {
             <div className="form-group">
               <label>Name</label>
               <input name="name" type="text" required />
+            </div>
+            <div className="form-group">
+              <label>Subject</label>
+              <input name="subject" type="text" required />
             </div>
 
             <div className="form-group">

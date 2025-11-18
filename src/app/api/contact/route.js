@@ -5,7 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
   try {
-    const { name, email, message, token } = await req.json();
+    const { name, email, subject, message, token } = await req.json();
 
     // 1️⃣ VERIFY RECAPTCHA v3
     const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=6Lf2yBAsAAAAAEgw6zdLbQuu5PKkcsBHR1vupUO6&response=${token}`;
@@ -30,6 +30,7 @@ export async function POST(req) {
         <h2>New Contact Message</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
         <p><strong>Message:</strong><br>${message}</p>
       `,
     });
