@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import "./vehicleRent.css";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +12,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export default function VehicleRentPage() {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedVehicle, setSelectedVehicle] = useState("");
+
+  const openModal = (vehicle) => {
+    setSelectedVehicle(vehicle);
+    setShowModal(true);
+  };
+
+  const closeModal = () => setShowModal(false);
+
   const cars = [
     { title: "CHR", image: "/chr.jpg", label: "5 Pax (with Baggage)" },
     {
@@ -67,32 +78,37 @@ export default function VehicleRentPage() {
   ];
 
   return (
-    <section className="bg-[#f8fcff] pb-20 bg-section  ">
-      {/* ⭐ Breadcrumbs  */}
+    <section className="bg-[#f8fcff] pb-20 bg-section">
       <Breadcrumbs />
       <div className="container mx-auto px-6 vehicle-section">
-        {/* ----------------------------- */}
-        {/* Rent a Car With Driver */}
-        {/* ----------------------------- */}
-        <CategoryCarousel title="Rent a Car With Driver" data={cars} />
-
-        {/* ----------------------------- */}
-        {/* Rent a Van With Driver */}
-        {/* ----------------------------- */}
-        <CategoryCarousel title="Rent A Van With Driver" data={vans} />
-
-        {/* ----------------------------- */}
-        {/* Rent A Bus With Driver */}
-        {/* ----------------------------- */}
-        <CategoryCarousel title="Rent A Bus With Driver" data={buses} />
+        <CategoryCarousel
+          title="Rent a Car With Driver"
+          data={cars}
+          openModal={openModal}
+        />
+        <CategoryCarousel
+          title="Rent A Van With Driver"
+          data={vans}
+          openModal={openModal}
+        />
+        <CategoryCarousel
+          title="Rent A Bus With Driver"
+          data={buses}
+          openModal={openModal}
+        />
       </div>
+
+      {/* -------------------- MODAL -------------------- */}
+      {showModal && (
+        <QuoteModal vehicle={selectedVehicle} closeModal={closeModal} />
+      )}
     </section>
   );
 }
 
-/* ---------- Reusable Component ---------- */
+/* ---------- Reusable Category Carousel ---------- */
 
-function CategoryCarousel({ title, data }) {
+function CategoryCarousel({ title, data, openModal }) {
   return (
     <div className="mb-16">
       <h3 className="text-xl font-semibold text-gray-700 mb-6">{title}</h3>
@@ -110,7 +126,7 @@ function CategoryCarousel({ title, data }) {
       >
         {data.map((item) => (
           <SwiperSlide key={item.title}>
-            <VehicleCard item={item} />
+            <VehicleCard item={item} openModal={openModal} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -118,13 +134,12 @@ function CategoryCarousel({ title, data }) {
   );
 }
 
-/* ---------- Card Component ---------- */
+/* ---------- Vehicle Card ---------- */
 
-function VehicleCard({ item }) {
+function VehicleCard({ item, openModal }) {
   return (
     <div className="carousel-card bg-white p-4 rounded-xl shadow-sm hover:shadow-lg transition">
-      {/* Image */}
-      <div className="relative h-48 w-full rounded-xl overflow-hidden bg-white flex items-center justify-center">
+      <div className="relative h-48 w-full rounded-xl overflow-hidden flex items-center justify-center">
         <Image
           src={item.image}
           alt={item.title}
@@ -137,7 +152,116 @@ function VehicleCard({ item }) {
       <h4 className="mt-4 text-lg font-semibold text-gray-700">{item.title}</h4>
       <p className="text-gray-500 text-sm">{item.label}</p>
 
-      <button className="btn-yellow mt-4 w-fit">Request Quote</button>
+      <button
+        className="btn-yellow mt-4 w-fit"
+        onClick={() => openModal(item.title)}
+      >
+        Request Quote
+      </button>
+    </div>
+  );
+}
+function QuoteModal({ vehicle, closeModal }) {
+  return (
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="bg-white w-full max-w-lg rounded-2xl p-8 shadow-xl relative animate-fadeIn">
+        {/* Close Button */}
+        <button
+          onClick={closeModal}
+          className="absolute top-3 right-3 text-gray-600 hover:text-black text-xl"
+        >
+          ✕
+        </button>
+
+        <h2 className="text-2xl font-semibold mb-4 text-[#1e3a5f]">
+          Request Quote
+        </h2>
+
+        <form
+          id="car-quote"
+          action="/quotation"
+          method="POST"
+          className="space-y-4"
+        >
+          <input type="hidden" name="vehicle" value={vehicle} />
+
+          <div>
+            <label className="font-medium">Name</label>
+            <input
+              name="name"
+              type="text"
+              className="inputBox"
+              placeholder="Enter Name"
+            />
+          </div>
+
+          <div>
+            <label className="font-medium">Email</label>
+            <input
+              name="email"
+              type="email"
+              className="inputBox"
+              placeholder="Enter Email"
+            />
+          </div>
+
+          <div>
+            <label className="font-medium">Phone</label>
+            <input
+              name="phone"
+              type="tel"
+              className="inputBox"
+              placeholder="Enter Phone"
+            />
+          </div>
+
+          <div className="flex gap-4">
+            <div className="w-1/2">
+              <label className="font-medium">Adults</label>
+              <input name="adults" type="number" className="inputBox" />
+            </div>
+
+            <div className="w-1/2">
+              <label className="font-medium">Children</label>
+              <input name="children" type="number" className="inputBox" />
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <div className="w-1/2">
+              <label className="font-medium">Arrival Date</label>
+              <input name="arrival" type="date" className="inputBox" />
+            </div>
+
+            <div className="w-1/2">
+              <label className="font-medium">Departure Date</label>
+              <input name="departure" type="date" className="inputBox" />
+            </div>
+          </div>
+
+          <div>
+            <label className="font-medium">Country</label>
+            <input
+              name="country"
+              type="text"
+              className="inputBox"
+              placeholder="Enter Country"
+            />
+          </div>
+
+          <div>
+            <label className="font-medium">Message</label>
+            <textarea name="message" rows="3" className="inputBox"></textarea>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-[#1e3a5f] text-white py-3 rounded-xl hover:bg-[#162e4a] transition font-semibold"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

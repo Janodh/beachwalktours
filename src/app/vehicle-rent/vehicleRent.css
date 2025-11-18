@@ -1,3 +1,6 @@
+@import "tailwindcss/theme" reference;
+@import "tailwindcss/utilities" reference;
+
 .carousel-card {
   border-radius: 18px;
   padding: 18px;
@@ -43,4 +46,34 @@
 .swiper-button-prev,
 .swiper-button-next {
   color: #2cb8c9;
+}
+
+.inputBox {
+  @apply w-full mt-1 p-1 border border-[#1e3a5f40] rounded-xl text-black outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-[#1e3a5f] transition-all;
+}
+
+
+.inputBox::placeholder {
+  @apply text-gray-400;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.font-medium {
+  color: #000;
+  font-weight: 500;
 }
