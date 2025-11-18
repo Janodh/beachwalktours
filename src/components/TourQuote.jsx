@@ -1,0 +1,119 @@
+"use client";
+import "./TourQuote.css";
+import { useState } from "react";
+
+export default function QuoteModal({ tour, closeModal }) {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  async function submitForm(e) {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess(false);
+
+    // 🔹 Execute reCAPTCHA v3
+    const token = await grecaptcha.execute(
+      "6Lf2yBAsAAAAABXXZVgXIFXMYbEqc1KWb_25yfbn",
+      { action: "submit" }
+    );
+
+    const formData = new FormData(e.target);
+    formData.append("recaptcha", token);
+
+    const res = await fetch("/api/send-tour-quote", {
+      method: "POST",
+      body: formData,
+    });
+
+    setLoading(false);
+
+    if (res.ok) {
+      setSuccess(true);
+      e.target.reset();
+    }
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="bg-white w-full max-w-lg rounded-2xl p-8 shadow-xl relative animate-fadeIn max-h-[100vh] overflow-y-auto">
+        <button
+          onClick={closeModal}
+          className="absolute top-3 right-3 text-gray-600 hover:text-black text-xl"
+        >
+          ✕
+        </button>
+
+        <h2 className="text-2xl font-semibold mb-4 text-[#1e3a5f]">
+          Request Quote
+        </h2>
+
+        {success && (
+          <p className="text-green-600 mb-4 font-medium">
+            ✅ Your quote request has been sent successfully!
+          </p>
+        )}
+
+        <form onSubmit={submitForm} className="space-y-4">
+          <input type="hidden" name="tour" value={tour} />
+
+          <div>
+            <label className="font-medium">Name</label>
+            <input name="name" className="inputBox" required />
+          </div>
+
+          <div>
+            <label className="font-medium">Email</label>
+            <input name="email" type="email" className="inputBox" required />
+          </div>
+
+          <div>
+            <label className="font-medium">Phone</label>
+            <input name="phone" type="tel" className="inputBox" required />
+          </div>
+
+          <div className="flex gap-4">
+            <div className="w-1/2">
+              <label>Adults</label>
+              <input name="adults" type="number" className="inputBox" />
+            </div>
+            <div className="w-1/2">
+              <label>Children</label>
+              <input name="children" type="number" className="inputBox" />
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <div className="w-1/2">
+              <label>Arrival</label>
+              <input name="arrival" type="date" className="inputBox" />
+            </div>
+            <div className="w-1/2">
+              <label>Departure</label>
+              <input name="departure" type="date" className="inputBox" />
+            </div>
+          </div>
+
+          <div>
+            <label>Country</label>
+            <input name="country" className="inputBox" />
+          </div>
+
+          <div>
+            <label>Message</label>
+            <textarea name="message" rows="3" className="inputBox"></textarea>
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-3 rounded-xl text-white font-semibold transition ${
+              loading ? "bg-gray-400" : "bg-[#1e3a5f] hover:bg-[#162e4a]"
+            }`}
+          >
+            {loading ? "Sending..." : "Send Request"}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}

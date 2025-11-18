@@ -1,30 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import "./itinerary.css";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { tours } from "./tourData";
-import QuoteModal from "@/components/TourQuote";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
 export default function Itinerarypage() {
-  const [showModal, setShowModal] = useState(false);
-  const [selectedTour, setSelectedTour] = useState("");
-
-  const openModal = (tourName) => {
-    setSelectedTour(tourName);
-    setShowModal(true);
-  };
-
-  const closeModal = () => setShowModal(false);
-
   return (
     <section className="bg-slate-50 pb-16">
+      {/* ⭐ Breadcrumbs */}
       <Breadcrumbs />
 
       <div className="container mx-auto px-4 sm:px-6">
@@ -71,18 +60,13 @@ export default function Itinerarypage() {
                 {t.desc}
               </p>
 
-              <button
-                className="btn-yellow mt-5 w-full sm:w-auto"
-                onClick={() => openModal(t.title)}
-              >
-                Request A Free Quote
+              <button className="btn-yellow mt-5 w-full sm:w-auto">
+                Request Quote
               </button>
             </article>
           ))}
         </div>
       </div>
-
-      {showModal && <QuoteModal tour={selectedTour} closeModal={closeModal} />}
     </section>
   );
 }

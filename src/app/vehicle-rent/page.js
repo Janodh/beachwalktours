@@ -156,16 +156,51 @@ function VehicleCard({ item, openModal }) {
         className="btn-yellow mt-4 w-fit"
         onClick={() => openModal(item.title)}
       >
-        Request Quote
+        Request A Free Quote
       </button>
     </div>
   );
 }
+/* ---------- Quote Modal Component ---------- */
+
 function QuoteModal({ vehicle, closeModal }) {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
+
+    // Run reCAPTCHA v3
+    const token = await grecaptcha.execute(
+      "6Lf2yBAsAAAAABXXZVgXIFXMYbEqc1KWb_25yfbn",
+      { action: "submit" }
+    );
+
+    const formData = new FormData(e.target);
+    formData.append("vehicle", vehicle);
+    formData.append("recaptcha", token);
+
+    const res = await fetch("/api/send-quote", {
+      method: "POST",
+      body: formData,
+    });
+
+    setLoading(false);
+
+    if (res.ok) {
+      setSuccess(true);
+      e.target.reset();
+    }
+  }
+
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="bg-white w-full max-w-lg rounded-2xl p-8 shadow-xl relative animate-fadeIn">
-        {/* Close Button */}
+      <div
+        className="bg-white w-full max-w-lg rounded-2xl p-8 shadow-xl relative animate-fadeIn 
+                  max-h-[100vh] overflow-y-auto"
+      >
+        {/* Close button */}
         <button
           onClick={closeModal}
           className="absolute top-3 right-3 text-gray-600 hover:text-black text-xl"
@@ -177,42 +212,28 @@ function QuoteModal({ vehicle, closeModal }) {
           Request Quote
         </h2>
 
-        <form
-          id="car-quote"
-          action="/quotation"
-          method="POST"
-          className="space-y-4"
-        >
+        {success && (
+          <p className="text-green-600 mb-4 font-medium">
+            ✅ Your quote request has been sent successfully!
+          </p>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
           <input type="hidden" name="vehicle" value={vehicle} />
 
           <div>
             <label className="font-medium">Name</label>
-            <input
-              name="name"
-              type="text"
-              className="inputBox"
-              placeholder="Enter Name"
-            />
+            <input name="name" type="text" className="inputBox" required />
           </div>
 
           <div>
             <label className="font-medium">Email</label>
-            <input
-              name="email"
-              type="email"
-              className="inputBox"
-              placeholder="Enter Email"
-            />
+            <input name="email" type="email" className="inputBox" required />
           </div>
 
           <div>
             <label className="font-medium">Phone</label>
-            <input
-              name="phone"
-              type="tel"
-              className="inputBox"
-              placeholder="Enter Phone"
-            />
+            <input name="phone" type="tel" className="inputBox" required />
           </div>
 
           <div className="flex gap-4">
@@ -241,12 +262,7 @@ function QuoteModal({ vehicle, closeModal }) {
 
           <div>
             <label className="font-medium">Country</label>
-            <input
-              name="country"
-              type="text"
-              className="inputBox"
-              placeholder="Enter Country"
-            />
+            <input name="country" type="text" className="inputBox" />
           </div>
 
           <div>
@@ -258,7 +274,7 @@ function QuoteModal({ vehicle, closeModal }) {
             type="submit"
             className="w-full bg-[#1e3a5f] text-white py-3 rounded-xl hover:bg-[#162e4a] transition font-semibold"
           >
-            Submit
+            {loading ? "Sending..." : "Submit"}
           </button>
         </form>
       </div>

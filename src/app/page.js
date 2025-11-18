@@ -3,7 +3,6 @@ import VehicleCarousel from "../components/VehicleCarousel";
 import ItineraryGrid from "../components/ItineraryGrid";
 import FeatureList from "../components/FeatureList";
 
-
 export default function Home() {
   return (
     <main>

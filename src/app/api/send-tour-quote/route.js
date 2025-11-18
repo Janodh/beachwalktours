@@ -4,27 +4,27 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
   const form = await req.formData();
-  const recaptchaToken = form.get("recaptcha");
 
-  // Verify token with Google
+  const token = form.get("recaptcha"); // 🔹 reCAPTCHA token
+
+  // 🔹 Validate reCAPTCHA v3 with Google
   const verifyRes = await fetch(
     `https://www.google.com/recaptcha/api/siteverify`,
     {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=6Lf2yBAsAAAAAEgw6zdLbQuu5PKkcsBHR1vupUO6&response=${recaptchaToken}`,
+      body: `secret=6Lf2yBAsAAAAAEgw6zdLbQuu5PKkcsBHR1vupUO6&response=${token}`,
     }
   );
 
-  const verifyData = await verifyRes.json();
+  const result = await verifyRes.json();
 
-  if (!verifyData.success || verifyData.score < 0.5) {
+  if (!result.success || result.score < 0.5) {
     return new Response("reCAPTCHA failed", { status: 400 });
   }
 
-  // Extract form data
   const data = {
-    vehicle: form.get("vehicle"),
+    tour: form.get("tour"),
     name: form.get("name"),
     email: form.get("email"),
     phone: form.get("phone"),
@@ -40,10 +40,10 @@ export async function POST(req) {
     await resend.emails.send({
       from: "Beach Walk Tours <onboarding@resend.dev>",
       to: "janodhjeewantha@gmail.com",
-      subject: "New Vehicle Quote Request",
+      subject: "New Tour Quote Request",
       html: `
-        <h2>New Quote Request</h2>
-        <p><b>Vehicle:</b> ${data.vehicle}</p>
+        <h2>New Tour Quote Request</h2>
+        <p><b>Tour:</b> ${data.tour}</p>
         <p><b>Name:</b> ${data.name}</p>
         <p><b>Email:</b> ${data.email}</p>
         <p><b>Phone:</b> ${data.phone}</p>
@@ -58,6 +58,6 @@ export async function POST(req) {
 
     return new Response("OK", { status: 200 });
   } catch (err) {
-    return new Response("Email error", { status: 500 });
+    return new Response("Email failed", { status: 500 });
   }
 }

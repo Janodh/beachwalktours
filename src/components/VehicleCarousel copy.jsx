@@ -62,14 +62,12 @@ export default function VehicleCarousel() {
                 </h4>
                 <p className="text-gray-500 text-sm">{it.label}</p>
 
-                <div className="mt-4 flex gap-3">
-                  <button
-                    className="btn-yellow "
-                    onClick={() => openModal(it.title)}
-                  >
-                    Request A Free Quote
-                  </button>
-                </div>
+                <button
+                  className="btn-yellow mt-4 w-full"
+                  onClick={() => openModal(it.title)}
+                >
+                  Book Now
+                </button>
               </div>
             </SwiperSlide>
           ))}
