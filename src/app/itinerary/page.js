@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { tours } from "./tourData";
+import Link from "next/link";
 import QuoteModal from "@/components/TourQuote";
 
 import "swiper/css";
@@ -63,8 +64,16 @@ export default function Itinerarypage() {
                 </div>
               </div>
 
-              <h4 className="mt-4 text-xl font-semibold text-gray-800">
+              {/* <h4 className="mt-4 text-xl font-semibold text-gray-800">
                 {t.title}
+              </h4> */}
+              <h4 className="mt-4 text-xl font-semibold text-gray-800">
+                <Link
+                  href={`/itinerary/itinerary-inner/${t.slug}`}
+                  className="hover:text-blue-600 transition"
+                >
+                  {t.title}
+                </Link>
               </h4>
 
               <p className="text-sm text-gray-600 mt-2 line-clamp-3">

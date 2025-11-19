@@ -20,7 +20,10 @@ export default function Footer() {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/itineraries">Itineraries</a>
+              <a href="/itinerary">Itineraries</a>
+            </li>
+            <li>
+              <a href="/vehicle-rent">Vehicle</a>
             </li>
             <li>
               <a href="/contact">Contact Us</a>

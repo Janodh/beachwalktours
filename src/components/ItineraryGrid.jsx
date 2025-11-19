@@ -10,30 +10,31 @@ import "swiper/css/pagination";
 import "./ItineraryGrid.css";
 import QuoteModal from "@/components/TourQuote";
 import Link from "next/link";
+import { tours } from "@/app/itinerary/tourData";
 
-const tours = [
-  {
-    title: "14 Days Diversity Tour",
-    days: "14 Day / 13 Night",
-    pax: "Any size",
-    images: ["/card4.jpg", "/card5.jpg"],
-    desc: "Get onboard on a magical 14–day journey through diverse landscapes...",
-  },
-  {
-    title: "4 Days flagship Itinerary",
-    days: "4 Day / 3 Night",
-    pax: "Any size",
-    images: ["/card5.jpg", "/card6.jpg"],
-    desc: "Extraordinary landscapes, rich culture, and our one-of-a-kind itineraries...",
-  },
-  {
-    title: "12 Days Cultural & Heritage Tour",
-    days: "12 Day / 11 Night",
-    pax: "Any size",
-    images: ["/card6.jpg", "/card4.jpg"],
-    desc: "This 12-day journey will launch in the lively coastal hub of Negombo...",
-  },
-];
+// const tours = [
+//   {
+//     title: "14 Days Diversity Tour",
+//     days: "14 Day / 13 Night",
+//     pax: "Any size",
+//     images: ["/card4.jpg", "/card5.jpg"],
+//     desc: "Get onboard on a magical 14–day journey through diverse landscapes...",
+//   },
+//   {
+//     title: "4 Days flagship Itinerary",
+//     days: "4 Day / 3 Night",
+//     pax: "Any size",
+//     images: ["/card5.jpg", "/card6.jpg"],
+//     desc: "Extraordinary landscapes, rich culture, and our one-of-a-kind itineraries...",
+//   },
+//   {
+//     title: "12 Days Cultural & Heritage Tour",
+//     days: "12 Day / 11 Night",
+//     pax: "Any size",
+//     images: ["/card6.jpg", "/card4.jpg"],
+//     desc: "This 12-day journey will launch in the lively coastal hub of Negombo...",
+//   },
+// ];
 
 export default function ItineraryGrid() {
   const [showModal, setShowModal] = useState(false);
@@ -88,7 +89,12 @@ export default function ItineraryGrid() {
 
               {/* Title */}
               <h4 className="mt-4 text-xl font-semibold text-gray-800">
-                {t.title}
+                <Link
+                  href={`/itinerary/itinerary-inner/${t.slug}`}
+                  className="hover:text-blue-600 transition"
+                >
+                  {t.title}
+                </Link>
               </h4>
 
               {/* Description */}

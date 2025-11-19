@@ -24,13 +24,13 @@ export default function Hero() {
               </p>
               <div className="mt-6 flex gap-3">
                 <a
-                  href="#itineraries"
+                  href="/itinerary"
                   className="inline-block bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold"
                 >
                   Browse Tours
                 </a>
                 <a
-                  href="#vehicles"
+                  href="/vehicle-rent"
                   className="inline-block border border-white px-6 py-3 rounded-md"
                 >
                   Rent a Car

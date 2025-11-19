@@ -73,33 +73,33 @@ export default function QuoteModal({ tour, closeModal }) {
 
           <div className="flex gap-4">
             <div className="w-1/2">
-              <label>Adults</label>
+              <label className="font-medium">Adults</label>
               <input name="adults" type="number" className="inputBox" />
             </div>
             <div className="w-1/2">
-              <label>Children</label>
+              <label className="font-medium">Children</label>
               <input name="children" type="number" className="inputBox" />
             </div>
           </div>
 
           <div className="flex gap-4">
             <div className="w-1/2">
-              <label>Arrival</label>
+              <label className="font-medium">Arrival</label>
               <input name="arrival" type="date" className="inputBox" />
             </div>
             <div className="w-1/2">
-              <label>Departure</label>
+              <label className="font-medium">Departure</label>
               <input name="departure" type="date" className="inputBox" />
             </div>
           </div>
 
           <div>
-            <label>Country</label>
+            <label className="font-medium">Country</label>
             <input name="country" className="inputBox" />
           </div>
 
           <div>
-            <label>Message</label>
+            <label className="font-medium">Message</label>
             <textarea name="message" rows="3" className="inputBox"></textarea>
           </div>
 
