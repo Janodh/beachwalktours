@@ -12,7 +12,7 @@ export async function POST(req) {
     {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=6Lf2yBAsAAAAAEgw6zdLbQuu5PKkcsBHR1vupUO6&response=${recaptchaToken}`,
+      body: `secret=6LeGmxgsAAAAAPkfskZwL60YurWQ6PV1ierLSx6k&response=${recaptchaToken}`,
     }
   );
 

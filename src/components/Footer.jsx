@@ -36,9 +36,46 @@ export default function Footer() {
 
         <div className="contact">
           <h5>Get In Touch</h5>
-          <p>📍 Galle Road, Colombo</p>
-          <p>📞 +94 77 123 4567</p>
-          <p>✉️ info@beachwalktours.com</p>
+          <p>
+            📍{" "}
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Beach+Walk+Tours,+Dungalpitiya,+Negombo,+Sri+Lanka"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              Beach Walk Tours, Dungalpitiya, Negombo, Sri Lanka
+            </a>
+          </p>
+
+          {/* Phone */}
+          <p>
+            📞{" "}
+            <a
+              href="tel:+9477 029 8911"
+              className="text-blue-600 hover:underline"
+            >
+              +9477 029 8911
+            </a>{" "}
+            /{" "}
+            <a
+              href="tel:+9477 323 5936"
+              className="text-blue-600 hover:underline"
+            >
+              +9477 323 5936
+            </a>
+          </p>
+
+          {/* Email */}
+          <p>
+            ✉️{" "}
+            <a
+              href="mailto:info@beachwalktours.com"
+              className="text-blue-600 hover:underline"
+            >
+              info@beachwalktours.com
+            </a>
+          </p>
 
           <div className="social-icons">
             <a href="#">

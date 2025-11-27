@@ -3,9 +3,9 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className="relative bg-section  ">
-      <div className="h-[540px] w-full relative">
+      <div className="h-[740px] w-full relative">
         <Image
-          src="/hero.jpg"
+          src="/2hero.webp"
           alt="Sri Lanka"
           fill
           style={{ objectFit: "cover" }}
@@ -33,7 +33,7 @@ export default function Hero() {
                   href="/vehicle-rent"
                   className="inline-block border border-white px-6 py-3 rounded-md"
                 >
-                  Rent a Car
+                  Rent a car with driver
                 </a>
               </div>
             </div>

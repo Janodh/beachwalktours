@@ -14,11 +14,11 @@ export default function TourHero({ images }) {
       modules={[Navigation, Pagination]}
       navigation
       pagination={{ clickable: true }}
-      className="rounded-2xl shadow-xl"
+      className="w-full overflow-hidden rounded-2xl shadow-xl"
     >
       {images.map((img, i) => (
-        <SwiperSlide key={i}>
-          <div className="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden">
+        <SwiperSlide key={i} className="!w-full">
+          <div className="relative w-full h-100 sm:h-96 rounded-2xl overflow-hidden">
             <Image src={img} alt="Tour Image" fill className="object-cover" />
           </div>
         </SwiperSlide>

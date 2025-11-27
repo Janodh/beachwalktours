@@ -39,7 +39,7 @@ export default function QuoteModal({ tour, closeModal }) {
         </button>
 
         <h2 className="text-2xl font-semibold mb-4 text-[#1e3a5f]">
-          Request Quote – {tour}
+          Request A Free Quote – {tour}
         </h2>
 
         {/* SUCCESS MESSAGE */}

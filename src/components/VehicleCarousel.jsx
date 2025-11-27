@@ -8,12 +8,36 @@ import VehicleQuoteModal from "@/components/VehicleQuoteModal";
 import "./vehicleCarousel.css";
 
 const items = [
-  { title: "Toyota Premio", image: "/card1.jpg", label: "Private Car" },
-  { title: "Toyota Hiace 12CH", image: "/card2.jpg", label: "Van" },
-  { title: "XGems Golden Dragon", image: "/card3.jpg", label: "Bus" },
-  { title: "Toyota Premio new", image: "/card1.jpg", label: "Private Car" },
-  { title: "Toyota Hiace 12CH new", image: "/card2.jpg", label: "Van" },
-  { title: "XGems Golden Dragon new", image: "/card3.jpg", label: "Bus" },
+  {
+    title: "Toyota Premio",
+    image: "/premio.jpg",
+    label: "1–3 Pax (with Baggage)",
+  },
+  {
+    title: "Toyota Hiace KDH",
+    image: "/kdh.jpg",
+    label: "10 Pax (with Baggage)",
+  },
+  {
+    title: "Xiamen Golden Dragon",
+    image: "/xiamen.jpg",
+    label: "35–50 Pax (with Baggage)",
+  },
+  {
+    title: "Nissan Teana 250XV",
+    image: "/teana.jpg",
+    label: "1–3 Pax (with Baggage)",
+  },
+  {
+    title: "Nissan Caravan",
+    image: "/carevn.jpg",
+    label: "8–14 Pax (with Baggage)",
+  },
+  {
+    title: "Toyota Prius",
+    image: "/prius.jpg",
+    label: "1–3 Pax (with Baggage)",
+  },
 ];
 
 export default function VehicleCarousel() {
@@ -37,7 +61,7 @@ export default function VehicleCarousel() {
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={20}
-          slidesPerView={1.2}
+          slidesPerView={1}
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000 }}
           breakpoints={{

@@ -8,7 +8,7 @@ export async function POST(req) {
     const { name, email, subject, message, token } = await req.json();
 
     // 1️⃣ VERIFY RECAPTCHA v3
-    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=6Lf2yBAsAAAAAEgw6zdLbQuu5PKkcsBHR1vupUO6&response=${token}`;
+    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=6LeGmxgsAAAAAPkfskZwL60YurWQ6PV1ierLSx6k&response=${token}`;
 
     const captchaRes = await fetch(verifyUrl, { method: "POST" }).then((r) =>
       r.json()

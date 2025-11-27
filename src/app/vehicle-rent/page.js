@@ -44,6 +44,38 @@ export default function VehicleRentPage() {
       image: "/teana.jpg",
       label: "1–3 Pax (with Baggage)",
     },
+
+    // ⭐ Missing ones added
+    {
+      title: "Honda Fit Shuttle",
+      image: "/fit-shuttle.jpg",
+      label: "1–3 Pax (with Baggage)",
+    },
+    {
+      title: "Honda Insight",
+      image: "/insight.jpg",
+      label: "1–3 Pax (with Baggage)",
+    },
+    {
+      title: "Toyota Allion",
+      image: "/allion.jpg",
+      label: "1–3 Pax (with Baggage)",
+    },
+    {
+      title: "Toyota Aqua",
+      image: "/aqua.jpg",
+      label: "1–3 Pax (with Baggage)",
+    },
+    {
+      title: "BMW 520D",
+      image: "/bmw520d.jpg",
+      label: "1–3 Pax (with Baggage)",
+    },
+    {
+      title: "Honda Vezel",
+      image: "/vezel.jpg",
+      label: "1–3 Pax (with Baggage)",
+    },
   ];
 
   const vans = [
@@ -62,6 +94,21 @@ export default function VehicleRentPage() {
       image: "/carevn.jpg",
       label: "8–14 Pax (with Baggage)",
     },
+    {
+      title: "Mercedes-Benz Vito",
+      image: "/vito.jpg",
+      label: "1–6 Pax (with Baggage)",
+    },
+    {
+      title: "Toyota Alphard",
+      image: "/alphard.jpg",
+      label: "1–6 Pax (with Baggage)",
+    },
+    {
+      title: "Nissan NV200",
+      image: "/nv200.jpg",
+      label: "1–7 Pax (with Baggage)",
+    },
   ];
 
   const buses = [
@@ -74,6 +121,21 @@ export default function VehicleRentPage() {
       title: "Xiamen Golden Dragon",
       image: "/xiamen.jpg",
       label: "35–50 Pax (with Baggage)",
+    },
+    {
+      title: "Mitsubishi Rosa",
+      image: "/rosa.jpg",
+      label: "20–29 Pax (with Baggage)",
+    },
+    {
+      title: "Nissan Civilian",
+      image: "/civilian.jpg",
+      label: "20–29 Pax (with Baggage)",
+    },
+    {
+      title: "Xiamen Golden Dragon Navigator",
+      image: "/golden-dragon-nav.jpg",
+      label: "45–60 Pax (with Baggage)",
     },
   ];
 
@@ -173,7 +235,7 @@ function QuoteModal({ vehicle, closeModal }) {
 
     // Run reCAPTCHA v3
     const token = await grecaptcha.execute(
-      "6Lf2yBAsAAAAABXXZVgXIFXMYbEqc1KWb_25yfbn",
+      "6LeGmxgsAAAAAL_OhPQVlaPjL-4ioJln-A5uStEQ",
       { action: "submit" }
     );
 
@@ -209,7 +271,7 @@ function QuoteModal({ vehicle, closeModal }) {
         </button>
 
         <h2 className="text-2xl font-semibold mb-4 text-[#1e3a5f]">
-          Request Quote
+          Request A Free Quote
         </h2>
 
         {success && (

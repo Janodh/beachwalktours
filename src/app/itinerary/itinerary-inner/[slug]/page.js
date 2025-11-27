@@ -37,7 +37,11 @@ export default async function TourInnerPage({ params }) {
             </div>
 
             <div className="lg:col-span-4">
-              <TourSidebar pax={data.pax} days={data.days} />
+              <TourSidebar
+                tourName={data.title}
+                pax={data.pax}
+                days={data.days}
+              />
             </div>
           </div>
 

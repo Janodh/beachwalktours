@@ -30,6 +30,6 @@ body {
   background-color: #f8fcff;
   padding-top: 80px !important;
   /* match header height */
-  padding-bottom: 5rem;
+  padding-bottom: 1rem;
   min-height: 100vh;
 }

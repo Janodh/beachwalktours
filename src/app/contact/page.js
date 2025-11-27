@@ -13,7 +13,7 @@ export default function Contact() {
 
     // Load reCAPTCHA v3
     const token = await grecaptcha.execute(
-      "6Lf2yBAsAAAAABXXZVgXIFXMYbEqc1KWb_25yfbn",
+      "6LeGmxgsAAAAAL_OhPQVlaPjL-4ioJln-A5uStEQ",
       { action: "contact_form" }
     );
 
@@ -52,14 +52,49 @@ export default function Contact() {
           </p>
 
           <div className="info-details">
-            <p>📍 Galle Road, Colombo, Sri Lanka</p>
-            <p>📞 +94 77 123 4567</p>
-            <p>✉️ info@beachwalktours.com</p>
+            <p>
+              📍{" "}
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Beach+Walk+Tours,+Dungalpitiya,+Negombo,+Sri+Lanka"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                Beach Walk Tours, Dungalpitiya, Negombo, Sri Lanka
+              </a>
+            </p>
+
+            <p>
+              📞{" "}
+              <a
+                href="tel:+94770298911"
+                className="text-blue-600 hover:underline"
+              >
+                +94 77 029 8911
+              </a>{" "}
+              /{" "}
+              <a
+                href="tel:+94773235936"
+                className="text-blue-600 hover:underline"
+              >
+                +94 77 323 5936
+              </a>
+            </p>
+
+            <p>
+              ✉️{" "}
+              <a
+                href="mailto:info@beachwalktours.com"
+                className="text-blue-600 hover:underline"
+              >
+                info@beachwalktours.com
+              </a>
+            </p>
           </div>
 
           <div className="map-container">
             <iframe
-              src="https://www.google.com/maps?q=Colombo,Sri%20Lanka&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126670.38394537024!2d79.77585101623751!3d7.189441092514729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2ee9c6bb2f73b%3A0xa51626e908186f3e!2sNegombo!5e0!3m2!1sen!2slk!4v1764156025185!5m2!1sen!2slk"
               loading="lazy"
             ></iframe>
           </div>

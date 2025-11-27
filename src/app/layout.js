@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <script
-          src="https://www.google.com/recaptcha/api.js?render=6Lf2yBAsAAAAABXXZVgXIFXMYbEqc1KWb_25yfbn"
+          src="https://www.google.com/recaptcha/api.js?render=6LeGmxgsAAAAAL_OhPQVlaPjL-4ioJln-A5uStEQ"
           async
         ></script>
         <Navbar />

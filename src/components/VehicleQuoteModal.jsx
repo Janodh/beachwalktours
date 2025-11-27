@@ -12,7 +12,7 @@ export default function VehicleQuoteModal({ vehicle, closeModal }) {
 
     // Get reCAPTCHA v3 token
     const token = await grecaptcha.execute(
-      "6Lf2yBAsAAAAABXXZVgXIFXMYbEqc1KWb_25yfbn",
+      "6LeGmxgsAAAAAL_OhPQVlaPjL-4ioJln-A5uStEQ",
       { action: "submit" }
     );
 
@@ -45,7 +45,7 @@ export default function VehicleQuoteModal({ vehicle, closeModal }) {
         </button>
 
         <h2 className="text-2xl font-semibold mb-4 text-[#1e3a5f]">
-          Request Quote
+          Request A Free Quote
         </h2>
 
         {success && (

@@ -1,5 +1,5 @@
 /* ===========================
-   Navbar Styles
+   Navbar Global Styles
 =========================== */
 header {
   position: fixed;
@@ -21,16 +21,21 @@ header nav {
   padding: 1rem 1.5rem;
 }
 
-/* Logo */
-header nav a.logo {
+/* ===========================
+   Logo
+=========================== */
+header nav a.logo,
+header nav a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* Menu */
+/* ===========================
+   Desktop Menu
+=========================== */
 header nav ul {
-  display: flex;
+
   gap: 2rem;
   font-weight: 600;
   color: #4b5563;
@@ -64,7 +69,9 @@ header nav ul li a:hover::after {
   width: 100%;
 }
 
-/* WhatsApp Button */
+/* ===========================
+   Buttons
+=========================== */
 header nav .whatsapp-btn {
   background-color: #22c55e;
   /* green-500 */
@@ -79,4 +86,78 @@ header nav .whatsapp-btn {
 header nav .whatsapp-btn:hover {
   background-color: #16a34a;
   /* green-600 */
+}
+
+/* ===========================
+   Mobile Menu Container
+=========================== */
+.mobile-menu {
+  display: none;
+}
+
+/* Show mobile menu only on small screens */
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+    background: white;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    /* gray-200 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-menu a {
+    display: block;
+    color: #374151;
+    /* gray-700 */
+    font-weight: 600;
+    padding: 0.5rem 0;
+    text-decoration: none;
+  }
+
+  .mobile-menu button {
+    width: 100%;
+    background-color: #22c55e;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+}
+
+/* ===========================
+   Mobile Toggle Button
+=========================== */
+.mobile-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #374151;
+  }
+}
+
+/* ===========================
+   Mobile Menu Animation
+=========================== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease forwards;
 }

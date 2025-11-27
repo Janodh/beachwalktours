@@ -139,32 +139,44 @@ export default function AboutPage() {
       </section>
 
       {/* Contact Cards */}
-      <section className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 mb-24">
-        {/* Phone */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 text-center">
-          <FaPhoneAlt className="text-[#1e3a5f] text-3xl mx-auto mb-3" />
-          <p className="font-semibold text-[#1e3a5f]">+9477 0120 881</p>
-          <p className="text-gray-500 text-sm mt-2">Call for inquiries</p>
-        </div>
+  <section className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 mb-24">
 
-        {/* Email */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 text-center">
-          <FaEnvelope className="text-[#1e3a5f] text-3xl mx-auto mb-3" />
-          <p className="font-semibold text-[#1e3a5f]">
-            info@beachwalktours.com
-          </p>
-          <p className="text-gray-500 text-sm mt-2">Write to us</p>
-        </div>
+  {/* Phone */}
+  <a
+    href="tel:+94770298911"
+    className="bg-white shadow-lg rounded-2xl p-6 text-center block hover:shadow-xl transition"
+  >
+    <FaPhoneAlt className="text-[#1e3a5f] text-3xl mx-auto mb-3" />
+    <p className="font-semibold text-[#1e3a5f]">+9477 029 8911</p>
+    <p className="text-gray-500 text-sm mt-2">Call for inquiries</p>
+  </a>
 
-        {/* Location */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 text-center">
-          <FaMapMarkerAlt className="text-[#1e3a5f] text-3xl mx-auto mb-3" />
-          <p className="font-semibold text-[#1e3a5f]">
-            Beach Walk Tours, Negombo, Sri Lanka
-          </p>
-          <p className="text-gray-500 text-sm mt-2">Visit us anytime</p>
-        </div>
-      </section>
+  {/* Email */}
+  <a
+    href="mailto:info@beachwalktours.com"
+    className="bg-white shadow-lg rounded-2xl p-6 text-center block hover:shadow-xl transition"
+  >
+    <FaEnvelope className="text-[#1e3a5f] text-3xl mx-auto mb-3" />
+    <p className="font-semibold text-[#1e3a5f]">info@beachwalktours.com</p>
+    <p className="text-gray-500 text-sm mt-2">Write to us</p>
+  </a>
+
+  {/* Location */}
+  <a
+    href="https://www.google.com/maps/search/?api=1&query=Beach+Walk+Tours,+Dungalpitiya,+Negombo,+Sri+Lanka"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-white shadow-lg rounded-2xl p-6 text-center block hover:shadow-xl transition"
+  >
+    <FaMapMarkerAlt className="text-[#1e3a5f] text-3xl mx-auto mb-3" />
+    <p className="font-semibold text-[#1e3a5f]">
+      Beach Walk Tours, Dungalpitiya, Negombo, Sri Lanka
+    </p>
+    <p className="text-gray-500 text-sm mt-2">Visit us anytime</p>
+  </a>
+
+</section>
+
     </main>
   );
 }
