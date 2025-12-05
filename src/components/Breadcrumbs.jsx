@@ -12,11 +12,19 @@ export default function Breadcrumbs() {
 
   // Remove unwanted route from breadcrumb
   const hiddenSegments = ["itinerary-inner"];
-  segments = segments.filter(seg => !hiddenSegments.includes(seg));
+  segments = segments.filter((seg) => !hiddenSegments.includes(seg));
+
+  // Custom labels for certain routes
+  const customLabels = {
+    aboutus: "About Us",
+    contact: "Contact Us",
+    termsconditions: "Terms & Conditions",
+    privacypolicy: "Privacy Policy",
+  };
 
   const breadcrumbs = segments.map((seg, i) => ({
     href: "/" + segments.slice(0, i + 1).join("/"),
-    label: seg.replace(/-/g, " "),
+    label: customLabels[seg.toLowerCase()] || seg.replace(/-/g, " "),
   }));
 
   return (

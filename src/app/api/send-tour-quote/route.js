@@ -39,7 +39,7 @@ export async function POST(req) {
   try {
     await resend.emails.send({
       from: "Beach Walk Tours <onboarding@resend.dev>",
-      to: "janodhjeewantha@gmail.com",
+      to: "info@beachwalktours.com",
       subject: "New Tour Quote Request",
       html: `
         <h2>New Tour Quote Request</h2>

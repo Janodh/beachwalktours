@@ -24,7 +24,7 @@ export async function POST(req) {
     // 2️⃣ SEND EMAIL USING RESEND
     await resend.emails.send({
       from: "Beach Walk Tours<onboarding@resend.dev>", // add email
-      to: "janodhjeewantha@gmail.com",
+      to: "info@beachwalktours.com",
       subject: "New Contact Form Message",
       html: `
         <h2>New Contact Message</h2>
