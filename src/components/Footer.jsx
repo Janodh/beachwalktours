@@ -88,7 +88,7 @@ export default function Footer() {
               <FaFacebookF />
             </a>
 
-            {/* Instagram (replace if you have the link) */}
+          
             <a
               href="https://www.instagram.com/"
               target="_blank"
