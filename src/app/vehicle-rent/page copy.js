@@ -50,7 +50,7 @@ export default function VehicleRentPage() {
     {
       title: "Toyota Hiace KDH",
       image: "/kdh.jpg",
-      label: "10 Pax (with Baggage)",
+      label: "6 Pax (with Baggage)",
     },
     {
       title: "Toyota Hiace Commuter",
@@ -60,7 +60,7 @@ export default function VehicleRentPage() {
     {
       title: "Nissan Caravan",
       image: "/carevn.jpg",
-      label: "8–14 Pax (with Baggage)",
+      label: "6 Pax (with Baggage)",
     },
   ];
 

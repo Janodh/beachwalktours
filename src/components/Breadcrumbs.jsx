@@ -20,6 +20,9 @@ export default function Breadcrumbs() {
     contact: "Contact Us",
     termsconditions: "Terms & Conditions",
     privacypolicy: "Privacy Policy",
+    "vehicle-rent": "Car And Driver Rental",
+    itinerary: "Sri lanka Tour Packages",
+    "request-quote": "Request A Free Quote",
   };
 
   const breadcrumbs = segments.map((seg, i) => ({

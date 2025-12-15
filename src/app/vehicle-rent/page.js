@@ -23,7 +23,7 @@ export default function VehicleRentPage() {
   const closeModal = () => setShowModal(false);
 
   const cars = [
-    { title: "CHR", image: "/chr.jpg", label: "5 Pax (with Baggage)" },
+    { title: "CHR", image: "/chr.jpg", label: "1-3 Pax (with Baggage)" },
     {
       title: "Toyota Axio",
       image: "/axio.jpg",
@@ -82,17 +82,17 @@ export default function VehicleRentPage() {
     {
       title: "Toyota Hiace KDH",
       image: "/kdh.jpg",
-      label: "10 Pax (with Baggage)",
+      label: "1-6 Pax (with Baggage)",
     },
     {
       title: "Toyota Hiace Commuter",
       image: "/hiace.png",
-      label: "9–15 Pax (with Baggage)",
+      label: "7–9 Pax (with Baggage)",
     },
     {
       title: "Nissan Caravan",
       image: "/carevn.jpg",
-      label: "8–14 Pax (with Baggage)",
+      label: "1-6 Pax (with Baggage)",
     },
     {
       title: "Mercedes-Benz Vito",
@@ -107,7 +107,7 @@ export default function VehicleRentPage() {
     {
       title: "Nissan NV200",
       image: "/nv200.jpg",
-      label: "1–7 Pax (with Baggage)",
+      label: "1–4 Pax (with Baggage)",
     },
   ];
 
@@ -115,7 +115,7 @@ export default function VehicleRentPage() {
     {
       title: "Toyota Coaster",
       image: "/coaster.jpg",
-      label: "15 Pax (with Baggage)",
+      label: "10-15 Pax (with Baggage)",
     },
     {
       title: "Xiamen Golden Dragon",
@@ -125,12 +125,12 @@ export default function VehicleRentPage() {
     {
       title: "Mitsubishi Rosa",
       image: "/rosa.jpg",
-      label: "20–29 Pax (with Baggage)",
+      label: "10–18 Pax (with Baggage)",
     },
     {
       title: "Nissan Civilian",
       image: "/civilian.jpg",
-      label: "20–29 Pax (with Baggage)",
+      label: "10–15 Pax (with Baggage)",
     },
     {
       title: "Xiamen Golden Dragon Navigator",

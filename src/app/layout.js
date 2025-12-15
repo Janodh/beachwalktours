@@ -8,7 +8,7 @@ import Script from "next/script";
 
 export const metadata = {
   title: "Beach Walk Tours",
-  description: "Sri Lanka Tour Packages & Car with Driver",
+  description: "Sri Lanka Tour Packages & Car and Driver Hire ",
 };
 
 export default function RootLayout({ children }) {

@@ -16,7 +16,7 @@ const items = [
   {
     title: "Toyota Hiace KDH",
     image: "/kdh.jpg",
-    label: "10 Pax (with Baggage)",
+    label: "1-6 Pax (with Baggage)",
   },
   {
     title: "Xiamen Golden Dragon",
@@ -31,12 +31,22 @@ const items = [
   {
     title: "Nissan Caravan",
     image: "/carevn.jpg",
-    label: "8–14 Pax (with Baggage)",
+    label: "1-6 Pax (with Baggage)",
   },
   {
     title: "Toyota Prius",
     image: "/prius.jpg",
     label: "1–3 Pax (with Baggage)",
+  },
+  {
+    title: "Toyota Hiace Commuter",
+    image: "/hiace.png",
+    label: "7-9 Pax (with Baggage)",
+  },
+  {
+    title: "Toyota Coaster",
+    image: "/coaster.jpg",
+    label: "10-15 Pax (with Baggage)",
   },
 ];
 
@@ -61,6 +71,7 @@ export default function VehicleCarousel() {
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={20}
+          navigation
           slidesPerView={1}
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000 }}

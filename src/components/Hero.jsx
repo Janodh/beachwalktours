@@ -16,7 +16,8 @@ export default function Hero() {
           <div className="container px-6">
             <div className="max-w-xl text-white">
               <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-                Sri Lanka Tour Packages
+                Car and Driver Rental
+                <span className="block">&amp; Sri Lanka Tour Packages</span>
               </h1>
               <p className="mt-4 text-lg">
                 Beach Walk Tours. Your journey to the best Sri Lanka
@@ -31,7 +32,7 @@ export default function Hero() {
                 </a>
                 <a
                   href="/vehicle-rent"
-                  className="inline-block border border-white px-6 py-3 rounded-md"
+                  className="inline-block bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 transition"
                 >
                   Rent a car with driver
                 </a>

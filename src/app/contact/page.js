@@ -20,6 +20,7 @@ export default function Contact() {
     const formData = {
       name: e.target.name.value,
       email: e.target.email.value,
+      subject: e.target.subject.value,
       message: e.target.message.value,
       token,
     };

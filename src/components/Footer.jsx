@@ -20,10 +20,10 @@ export default function Footer() {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/itinerary">Itineraries</a>
+              <a href="/itinerary">Tour Packages</a>
             </li>
             <li>
-              <a href="/vehicle-rent">Vehicle</a>
+              <a href="/vehicle-rent">Car And Driver Rental</a>
             </li>
             <li>
               <a href="/contact">Contact Us</a>
@@ -78,13 +78,33 @@ export default function Footer() {
           </p>
 
           <div className="social-icons">
-            <a href="#">
+            {/* Facebook */}
+            <a
+              href="https://web.facebook.com/beachwalktours"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Beach Walk Tours Facebook"
+            >
               <FaFacebookF />
             </a>
-            <a href="#">
+
+            {/* Instagram (replace if you have the link) */}
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
               <FaInstagram />
             </a>
-            <a href="#">
+
+            {/* WhatsApp */}
+            <a
+              href="https://wa.me/94770298911"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
               <FaWhatsapp />
             </a>
           </div>

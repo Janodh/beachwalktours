@@ -1,45 +1,71 @@
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(req) {
-  const form = await req.formData();
-  const recaptchaToken = form.get("recaptcha");
-
-  // Verify token with Google
-  const verifyRes = await fetch(
-    `https://www.google.com/recaptcha/api/siteverify`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=6LeGmxgsAAAAAPkfskZwL60YurWQ6PV1ierLSx6k&response=${recaptchaToken}`,
-    }
-  );
-
-  const verifyData = await verifyRes.json();
-
-  if (!verifyData.success || verifyData.score < 0.5) {
-    return new Response("reCAPTCHA failed", { status: 400 });
-  }
-
-  // Extract form data
-  const data = {
-    vehicle: form.get("vehicle"),
-    name: form.get("name"),
-    email: form.get("email"),
-    phone: form.get("phone"),
-    adults: form.get("adults"),
-    children: form.get("children"),
-    arrival: form.get("arrival"),
-    departure: form.get("departure"),
-    country: form.get("country"),
-    message: form.get("message"),
-  };
-
   try {
-    await resend.emails.send({
-      from: "Beach Walk Tours <onboarding@resend.dev>",
+    console.log("📩 Vehicle Quote API called");
+
+    const form = await req.formData();
+    const recaptchaToken = form.get("recaptcha");
+
+    console.log("🧩 reCAPTCHA token:", recaptchaToken);
+
+    // 🔐 Verify reCAPTCHA
+    const verifyRes = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `secret=${process.env.RECAPTCHA_SECRET}&response=${recaptchaToken}`,
+      }
+    );
+
+    const verifyData = await verifyRes.json();
+    console.log("🛡️ Captcha result:", verifyData);
+
+    if (!verifyData.success || verifyData.score < 0.5) {
+      console.error("❌ Captcha failed");
+      return NextResponse.json({ error: "reCAPTCHA failed" }, { status: 400 });
+    }
+
+    // 📦 Extract form data
+    const data = {
+      vehicle: form.get("vehicle"),
+      name: form.get("name"),
+      email: form.get("email"),
+      phone: form.get("phone"),
+      adults: form.get("adults"),
+      children: form.get("children"),
+      arrival: form.get("arrival"),
+      departure: form.get("departure"),
+      country: form.get("country"),
+      message: form.get("message"),
+    };
+
+    console.log("📦 Form data:", data);
+
+    // 📧 Zoho SMTP transport
+    const transporter = nodemailer.createTransport({
+      host: process.env.ZOHO_SMTP_HOST, // smtp.zoho.com / smtp.zoho.in
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.ZOHO_SMTP_USER,
+        pass: process.env.ZOHO_SMTP_PASS, // APP PASSWORD
+      },
+      logger: true,
+      debug: true,
+    });
+
+    console.log("🔌 Verifying SMTP...");
+    await transporter.verify();
+    console.log("✅ SMTP verified");
+
+    // ✉️ Send email
+    const info = await transporter.sendMail({
+      from: `"Beach Walk Tours" <${process.env.ZOHO_SMTP_USER}>`,
       to: "info@beachwalktours.com",
+      replyTo: data.email,
       subject: "New Vehicle Quote Request",
       html: `
         <h2>New Quote Request</h2>
@@ -56,8 +82,14 @@ export async function POST(req) {
       `,
     });
 
-    return new Response("OK", { status: 200 });
+    console.log("📤 Email sent:", info);
+
+    return NextResponse.json({ success: true });
   } catch (err) {
-    return new Response("Email error", { status: 500 });
+    console.error("🔥 MAIL ERROR FULL:", err);
+    return NextResponse.json(
+      { error: "Email sending failed", details: err.message },
+      { status: 500 }
+    );
   }
 }

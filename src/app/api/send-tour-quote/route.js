@@ -1,45 +1,69 @@
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(req) {
-  const form = await req.formData();
-
-  const token = form.get("recaptcha"); // 🔹 reCAPTCHA token
-
-  // 🔹 Validate reCAPTCHA v3 with Google
-  const verifyRes = await fetch(
-    `https://www.google.com/recaptcha/api/siteverify`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=6LeGmxgsAAAAAPkfskZwL60YurWQ6PV1ierLSx6k&response=${token}`,
-    }
-  );
-
-  const result = await verifyRes.json();
-
-  if (!result.success || result.score < 0.5) {
-    return new Response("reCAPTCHA failed", { status: 400 });
-  }
-
-  const data = {
-    tour: form.get("tour"),
-    name: form.get("name"),
-    email: form.get("email"),
-    phone: form.get("phone"),
-    adults: form.get("adults"),
-    children: form.get("children"),
-    arrival: form.get("arrival"),
-    departure: form.get("departure"),
-    country: form.get("country"),
-    message: form.get("message"),
-  };
-
   try {
-    await resend.emails.send({
-      from: "Beach Walk Tours <onboarding@resend.dev>",
+    console.log("📩 Tour Quote API called");
+
+    const form = await req.formData();
+    const token = form.get("recaptcha");
+
+    // 🔐 Verify reCAPTCHA v3
+    const verifyRes = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `secret=${process.env.RECAPTCHA_SECRET}&response=${token}`,
+      }
+    );
+
+    const result = await verifyRes.json();
+    console.log("🛡️ Captcha result:", result);
+
+    if (!result.success || result.score < 0.5) {
+      console.error("❌ reCAPTCHA failed");
+      return NextResponse.json({ error: "reCAPTCHA failed" }, { status: 400 });
+    }
+
+    // 📦 Extract form data
+    const data = {
+      tour: form.get("tour"),
+      name: form.get("name"),
+      email: form.get("email"),
+      phone: form.get("phone"),
+      adults: form.get("adults"),
+      children: form.get("children"),
+      arrival: form.get("arrival"),
+      departure: form.get("departure"),
+      country: form.get("country"),
+      message: form.get("message"),
+    };
+
+    console.log("📦 Form data:", data);
+
+    // 📧 Zoho SMTP
+    const transporter = nodemailer.createTransport({
+      host: process.env.ZOHO_SMTP_HOST, // smtp.zoho.com / smtp.zoho.in
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.ZOHO_SMTP_USER,
+        pass: process.env.ZOHO_SMTP_PASS, // APP PASSWORD
+      },
+      logger: true,
+      debug: true,
+    });
+
+    console.log("🔌 Verifying SMTP...");
+    await transporter.verify();
+    console.log("✅ SMTP verified");
+
+    // ✉️ Send email
+    const info = await transporter.sendMail({
+      from: `"Beach Walk Tours" <${process.env.ZOHO_SMTP_USER}>`,
       to: "info@beachwalktours.com",
+      replyTo: data.email,
       subject: "New Tour Quote Request",
       html: `
         <h2>New Tour Quote Request</h2>
@@ -56,8 +80,14 @@ export async function POST(req) {
       `,
     });
 
-    return new Response("OK", { status: 200 });
+    console.log("📤 Email sent:", info);
+
+    return NextResponse.json({ success: true });
   } catch (err) {
-    return new Response("Email failed", { status: 500 });
+    console.error("🔥 MAIL ERROR FULL:", err);
+    return NextResponse.json(
+      { error: "Email failed", details: err.message },
+      { status: 500 }
+    );
   }
 }

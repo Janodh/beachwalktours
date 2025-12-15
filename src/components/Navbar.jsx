@@ -31,12 +31,12 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/vehicle-rent" className="hover:text-blue-600">
-                Vehicles
+                Car And Driver Rental
               </Link>
             </li>
             <li>
               <Link href="/itinerary" className="hover:text-blue-600">
-                Itineraries
+                Tour Packages
               </Link>
             </li>
             <li>
@@ -77,13 +77,13 @@ export default function Navbar() {
               href="/vehicle-rent"
               className="block text-gray-700 font-semibold"
             >
-              Vehicles
+              Car And Driver Rental
             </Link>
             <Link
               href="/itinerary"
               className="block text-gray-700 font-semibold"
             >
-              Itineraries
+              Tour Packages
             </Link>
             <Link href="/contact" className="block text-gray-700 font-semibold">
               Contact
