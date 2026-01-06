@@ -1,6 +1,7 @@
 "use client";
 import "./TourQuote.css";
 import { useState } from "react";
+import { reportConversion } from "@/lib/gtag";
 
 export default function VehicleQuoteModal({ vehicle, closeModal }) {
   const [loading, setLoading] = useState(false);
@@ -28,6 +29,7 @@ export default function VehicleQuoteModal({ vehicle, closeModal }) {
     setLoading(false);
 
     if (res.ok) {
+      reportConversion();
       setSuccess(true);
       e.target.reset();
     }

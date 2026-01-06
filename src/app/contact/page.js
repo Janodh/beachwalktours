@@ -2,6 +2,7 @@
 import "./contact.css";
 import { useState } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { reportConversion } from "@/lib/gtag";
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
@@ -34,6 +35,7 @@ export default function Contact() {
     setLoading(false);
 
     if (res.ok) {
+      reportConversion();
       setSuccess(true);
       e.target.reset();
     }

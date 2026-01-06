@@ -1,6 +1,7 @@
 "use client";
 import "./TourQuote.css";
 import { useState } from "react";
+import { reportConversion } from "@/lib/gtag";
 
 export default function QuoteModal({ tour, closeModal }) {
   const [loading, setLoading] = useState(false);
@@ -28,6 +29,7 @@ export default function QuoteModal({ tour, closeModal }) {
     setLoading(false);
 
     if (res.ok) {
+      reportConversion();
       setSuccess(true);
       e.target.reset();
     }

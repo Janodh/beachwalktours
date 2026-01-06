@@ -26,6 +26,23 @@ export default function RootLayout({ children }) {
             src="https://cdn-cookieyes.com/client_data/deaead8ee1b2af39f1ac25f3a71e8c9b/script.js"
             strategy="beforeInteractive"
           ></script>
+          <Script
+            src="https://www.googletagmanager.com/gtag/js?id=G-K36EKEKTYL"
+            strategy="afterInteractive"
+          />
+
+          <Script id="google-ads" strategy="afterInteractive">
+            {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-K36EKEKTYL');
+            gtag('config', 'AW-16529813358');
+             gtag('config', 'GT-WF6J9R7X');
+            gtag('config', 'GT-T537FV2W');
+          `}
+          </Script>
         </header>
 
         <Navbar />

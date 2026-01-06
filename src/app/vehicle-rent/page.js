@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { reportConversion } from "@/lib/gtag";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -251,6 +252,7 @@ function QuoteModal({ vehicle, closeModal }) {
     setLoading(false);
 
     if (res.ok) {
+      reportConversion();
       setSuccess(true);
       e.target.reset();
     }

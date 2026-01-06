@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
-
+import { reportConversion } from "@/lib/gtag";
 export default function QuoteForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -53,6 +53,7 @@ export default function QuoteForm() {
     setLoading(false);
 
     if (res.ok) {
+      reportConversion();
       setSuccess(true);
       e.target.reset();
       setForm({ first_name: "", last_name: "", name: "" }); // reset state
